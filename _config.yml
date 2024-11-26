@@ -1,0 +1,33 @@
+# Site Configuration
+title: "Javad Arjmandi | Software Enineer"
+description: "My personal landing page to showcase my links, location, and contact information."
+url: "https://arjmandi.de"
+baseurl: ""
+lang: "en"
+
+# SEO Metadata
+author: "Javad Arjmandi" # Your name
+email: "javad@arjmandi.de" # Your contact email
+keywords: "Android Developer, Software Engineer, Hamburg, portfolio"
+timezone: "CEST"
+
+# Plugins for SEO and Sitemap
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Sitemap Configuration
+sitemap:
+  changefreq: "monthly" 
+  priority: 1.0 
+
+# Permalink Style
+permalink: pretty # SEO-friendly URLs
+
+# Default Metadata for Pages
+defaults:
+  - scope:
+      path: "" # Applies to all files
+    values:
+      layout: default # Default layout
+
