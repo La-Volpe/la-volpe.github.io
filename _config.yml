@@ -15,6 +15,7 @@ timezone: "CEST"
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-remote-theme
 #Theme:
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "dark"
