@@ -12,6 +12,8 @@ author: "Javad Arjmandi" # Your name
 email: "javad@arjmandi.de" # Your contact email
 keywords: "Android Developer, Software Engineer, Hamburg, portfolio"
 timezone: "CEST"
+show_downloads: false
+google_analytics: G-3VHYD3FZRE
 
 # Plugins for SEO and Sitemap
 plugins:
