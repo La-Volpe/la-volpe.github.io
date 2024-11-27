@@ -1,9 +1,3 @@
----
-layout: default
-title: "Javad Arjmandi | Software Engineer"
-description: "This is my landing page, where you can find ways to connect with me and explore my work in coding and writing."
----
-
 # Hi, I'm Javad Arjmandi👋
 
 Welcome to my personal landing page! I’m a software engineer with a passion for crafting mobile applications. Here, you’ll find all the ways to connect with me: explore my professional journey and reach out for work opportunities on LinkedIn, dive into my latest thoughts and ideas on Medium, and check out the projects I’m working on in my own time on GitHub. Thank you for stopping by—I’m glad to have you here! ☺️
