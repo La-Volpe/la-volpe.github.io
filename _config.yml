@@ -16,7 +16,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 #Theme:
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 
 # Sitemap Configuration
 sitemap:
