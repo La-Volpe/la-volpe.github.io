@@ -16,7 +16,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 #Theme:
-theme: jekyll-theme-slate
+theme: jekyll-theme-hacker
 
 # Sitemap Configuration
 sitemap:
