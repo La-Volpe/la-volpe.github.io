@@ -1,5 +1,5 @@
 # Site Configuration
-title: "Javad Arjmandi | Software Enineer"
+title: "Javad Arjmandi | Software Engineer"
 description: "My personal landing page to showcase my links, location, and contact information."
 url: "https://arjmandi.de"
 baseurl: ""
@@ -19,8 +19,9 @@ google_analytics: G-3VHYD3FZRE
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-remote-theme 
 #Theme:
-theme: jekyll-theme-hacker
+remote_theme: pages-themes/hacker@v0.2.0
 
 # Sitemap Configuration
 sitemap:
