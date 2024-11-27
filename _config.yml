@@ -13,9 +13,10 @@ timezone: "CEST"
 
 # Plugins for SEO and Sitemap
 plugins:
+  - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-remote-theme
+  - jekyll-include-cache 
 #Theme:
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "dark"
