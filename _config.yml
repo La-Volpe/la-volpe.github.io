@@ -4,6 +4,8 @@ description: "My personal landing page to showcase my links, location, and conta
 url: "https://arjmandi.de"
 baseurl: ""
 lang: "en"
+header: false
+github_button: false
 
 # SEO Metadata
 author: "Javad Arjmandi" # Your name
