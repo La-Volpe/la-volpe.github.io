@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Javad Arjmandi</title>
+    <link>https://arjmandi.de/</link>
+    <description>Recent content on Javad Arjmandi</description>
+    <generator>Hugo -- 0.147.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 21 Nov 2024 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://arjmandi.de/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SDK Development; The Good, The Bad, The Ugly</title>
+      <link>https://arjmandi.de/blog/sdk-dev-good-bad-ugly/</link>
+      <pubDate>Thu, 21 Nov 2024 10:00:00 +0200</pubDate>
+      <guid>https://arjmandi.de/blog/sdk-dev-good-bad-ugly/</guid>
+      <description>&lt;h2 id=&#34;some-boring-backstory-intro&#34;&gt;Some boring backstory intro&lt;/h2&gt;
+&lt;p&gt;A few years ago, a friend roped me into a &amp;ldquo;simple&amp;rdquo; side project to make some extra cash. The plan? Build a few apps, slap on some ads, and watch the money roll in. Easy, right? Well… not quite. We quickly found ourselves tangled in a mess of issues. Google AdMob gave us trouble, some ad networks were outright shady, and others offered rates so bad, it wasn&amp;rsquo;t even worth the effort. After one particularly frustrating day, it hit me: &amp;ldquo;Why not build a library to handle all these ad networks and decide which ads to show based on the best deal?&amp;rdquo; Little did I know, this concept already had a name - ad mediation. Since we had a few adnetworks to play with, the idea of creating our own SDK seemed like a no-brainer.
+To our surprise, the SDK became such a hit (in our scale) that it completely overshadowed the apps we were trying to monetize in the first place. Suddenly, the SDK was the star of the show, and our apps? Well, they took a back seat.
+That was the start of my SDK-building journey.
+Fast forward through a decade of working with SDKs - both my own and ones from big-name companies and niche B2B partners - and let&amp;rsquo;s just say, I&amp;rsquo;ve seen the good, the bad, and the downright ugly when it comes to SDKs. I think I qualify as a SDK expert.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://arjmandi.de/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://arjmandi.de/about/</guid>
+      <description>&lt;p&gt;Hi, I’m Javad Arjmandi — an Android developer who enjoys crafting thoughtful, efficient, and modern mobile apps.&lt;br&gt;
+I work primarily with Kotlin, Jetpack Compose, and Clean Architecture, and I like building things that are both elegant and maintainable. I care about clean code, developer experience, and solving real problems with the right tools — whether that’s Ktor on the backend or Coroutines on the UI thread.&lt;/p&gt;
+&lt;p&gt;But this site isn’t just about Android.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
