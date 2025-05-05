@@ -3,24 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arjmandi.de/tags/android/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://arjmandi.de/blog/core-module-is-bad/</loc>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/blog/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/categories/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/tags/clean-architecture/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://arjmandi.de/categories/development/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://arjmandi.de/categories/koans/</loc>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/tags/kotlin/</loc>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://arjmandi.de/tags/</loc>
+    <lastmod>2025-05-05T20:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://arjmandi.de/categories/development/</loc>
     <lastmod>2024-11-21T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/tags/sdk/</loc>
@@ -30,9 +39,6 @@
     <lastmod>2024-11-21T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/tags/sdk-development/</loc>
-    <lastmod>2024-11-21T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://arjmandi.de/tags/</loc>
     <lastmod>2024-11-21T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://arjmandi.de/about/</loc>

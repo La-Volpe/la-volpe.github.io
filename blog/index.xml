@@ -6,8 +6,18 @@
     <description>Recent content in Blogs on Javad Arjmandi</description>
     <generator>Hugo -- 0.147.0</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Nov 2024 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 May 2025 20:00:00 +0200</lastBuildDate>
     <atom:link href="https://arjmandi.de/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Koans: core modules.</title>
+      <link>https://arjmandi.de/blog/core-module-is-bad/</link>
+      <pubDate>Mon, 05 May 2025 20:00:00 +0200</pubDate>
+      <guid>https://arjmandi.de/blog/core-module-is-bad/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The Koans&amp;rdquo; series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;pretext&#34;&gt;Pretext&lt;/h2&gt;
+&lt;p&gt;Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to &lt;a href=&#34;http://mbt925.github.io&#34;&gt;Mohsen&lt;/a&gt; for guidance. That conversation led to a moment of enlightment.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>SDK Development; The Good, The Bad, The Ugly</title>
       <link>https://arjmandi.de/blog/sdk-dev-good-bad-ugly/</link>

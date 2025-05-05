@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Android Koans: core modules. | Javad Arjmandi</title>
+<meta name="keywords" content="android, kotlin, clean-architecture, clean-architecture">
+<meta name="description" content="
+&ldquo;The Koans&rdquo; series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.
+Pretext
+Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to Mohsen for guidance. That conversation led to a moment of enlightment.">
+<meta name="author" content="Javad Arjmandi">
+<link rel="canonical" href="https://arjmandi.de/blog/core-module-is-bad/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://arjmandi.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://arjmandi.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://arjmandi.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://arjmandi.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://arjmandi.de/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://arjmandi.de/blog/core-module-is-bad/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-1K8S7SJRH2"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-1K8S7SJRH2');
+        }
+      </script><meta property="og:url" content="https://arjmandi.de/blog/core-module-is-bad/">
+  <meta property="og:site_name" content="Javad Arjmandi">
+  <meta property="og:title" content="Android Koans: core modules.">
+  <meta property="og:description" content=" “The Koans” series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.
+Pretext Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to Mohsen for guidance. That conversation led to a moment of enlightment.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-05-05T20:00:00+02:00">
+    <meta property="article:modified_time" content="2025-05-05T20:00:00+02:00">
+    <meta property="article:tag" content="Android">
+    <meta property="article:tag" content="Kotlin">
+    <meta property="article:tag" content="Clean-Architecture">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Koans: core modules.">
+<meta name="twitter:description" content="
+&ldquo;The Koans&rdquo; series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.
+Pretext
+Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to Mohsen for guidance. That conversation led to a moment of enlightment.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://arjmandi.de/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Android Koans: core modules.",
+      "item": "https://arjmandi.de/blog/core-module-is-bad/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Android Koans: core modules.",
+  "name": "Android Koans: core modules.",
+  "description": " \u0026ldquo;The Koans\u0026rdquo; series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.\nPretext Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to Mohsen for guidance. That conversation led to a moment of enlightment.\n",
+  "keywords": [
+    "android", "kotlin", "clean-architecture", "clean-architecture"
+  ],
+  "articleBody": " “The Koans” series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.\nPretext Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to Mohsen for guidance. That conversation led to a moment of enlightment.\nWhat is a core module? A :core typically refers to a library module that contains shared code or utilities used across multiple modules in a project (e.g., :core, :common, :base, etc.). These modules are often created to avoid duplication and promote reuse of code such as:\nExtensions functions Utility classes Network/data models Constants Helper methods How should I inject them in my other modules? Short answer: You shouldn’t. You should try to get rid of this module.\nWhy? Introducing a core module sets off a chain reaction (like tipping the first of three dominos) each leading to increasing architectural degradation.\n1. Ambiguity of “Core” The term core, or its equivalent, is ambiguous and often confusing. There is no clear consensus among developers about what should reside within a core module. Should it contain core business logic? Should it be limited to base classes and foundational abstraction layers? Should it even include any core functionality at all? Or should it be a completely independent module containing only tools and utility classes? This lack of clarity inevitably leads to reduced readability and long-term confusion and also makes the core module\n2. Prone to being misuesd At some point, someone will inevitably start adding code to the core module that was never intended to be placed there. Due to this ambiguity, developers may treat the core module as a dumping ground for code they’re unsure where to place. As a result, the core module (originally meant to promote clean, low-footprint architecture) can devolve into a verbose, catch-all module containing everything from network handlers to formatters and mapper utilities.\n3. Inevitablity of a refactor Eventually, someone will need to address the problems introduced by the core module. If they want to avoid side effects—such as having to include the entire core module just to use a simple logger, or multiple developers simultaneously modifying it because they each decide their logic belongs there—then a refactor becomes inevitable. The outcome? The monolithic core module gets broken down into smaller, focused modules like network, local_storage, logger, and so on. So why not distribute these responsibilities from the start and avoid unnecessary overhead later?\n4. An orphan module (Lack of ownership) When a core module becomes a dumping ground for everything that might be useful somewhere else (utility functions, constants, extensions, logging helpers, DI setup, network models, etc.) no one feels responsible for maintaining it. It becomes a “shared” place where anyone can add anything without clear rules or ownership. Without ownership, bugs go unfixed, outdated code piles up, and new developers don’t know where to look. Developers don’t know what belongs in :core, and Because everyone uses :core, no one wants to touch it for fear of breaking everything.\nVerdict While the idea of a core module may seem like a smart way to centralize reusable components, in practice it often introduces more problems than it solves. Its vague purpose, tendency to attract unrelated code, and lack of clear ownership can lead to significant architectural decay over time. Rather than relying on a monolithic core, favor small, well-named, purpose-specific modules from the start. This approach not only promotes clean boundaries and single responsibility but also makes your codebase easier to navigate, test, and evolve. When in doubt, split it out.\nMantra “Core isn’t a junk drawer. Organize from day one.”\n",
+  "wordCount" : "685",
+  "inLanguage": "en",
+  "datePublished": "2025-05-05T20:00:00+02:00",
+  "dateModified": "2025-05-05T20:00:00+02:00",
+  "author":{
+    "@type": "Person",
+    "name": "Javad Arjmandi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arjmandi.de/blog/core-module-is-bad/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Javad Arjmandi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arjmandi.de/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://arjmandi.de/" accesskey="h" title="Javad Arjmandi (Alt + H)">Javad Arjmandi</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://arjmandi.de/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://arjmandi.de/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Android Koans: core modules.
+    </h1>
+    <div class="post-meta"><span title='2025-05-05 20:00:00 +0200 CEST'>May 5, 2025</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Javad Arjmandi
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>&ldquo;The Koans&rdquo; series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.</p></blockquote>
+<h2 id="pretext">Pretext<a hidden class="anchor" aria-hidden="true" href="#pretext">#</a></h2>
+<p>Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to <a href="http://mbt925.github.io">Mohsen</a> for guidance. That conversation led to a moment of enlightment.</p>
+<h2 id="what-is-a-core-module">What is a core module?<a hidden class="anchor" aria-hidden="true" href="#what-is-a-core-module">#</a></h2>
+<p>A <code>:core</code> typically refers to a library module that contains shared code or utilities used across multiple modules in a project (e.g., <code>:core</code>, <code>:common</code>, <code>:base</code>, etc.). These modules are often created to avoid duplication and promote reuse of code such as:</p>
+<ul>
+<li>Extensions functions</li>
+<li>Utility classes</li>
+<li>Network/data models</li>
+<li>Constants</li>
+<li>Helper methods</li>
+</ul>
+<h2 id="how-should-i-inject-them-in-my-other-modules">How should I inject them in my other modules?<a hidden class="anchor" aria-hidden="true" href="#how-should-i-inject-them-in-my-other-modules">#</a></h2>
+<p>Short answer: You shouldn&rsquo;t. You should try to get rid of this module.</p>
+<h2 id="why">Why?<a hidden class="anchor" aria-hidden="true" href="#why">#</a></h2>
+<p>Introducing a core module sets off a chain reaction (like tipping the first of three dominos) each leading to increasing architectural degradation.</p>
+<h3 id="1-ambiguity-of-core">1. Ambiguity of &ldquo;Core&rdquo;<a hidden class="anchor" aria-hidden="true" href="#1-ambiguity-of-core">#</a></h3>
+<p>The term <em>core</em>, or its equivalent, is ambiguous and often confusing. There is no clear consensus among developers about what should reside within a core module. Should it contain <em>core</em> business logic? Should it be limited to base classes and foundational abstraction layers? Should it even include any <em>core</em> functionality at all? Or should it be a completely independent module containing only tools and utility classes? This lack of clarity inevitably leads to reduced readability and long-term confusion and also makes the core module</p>
+<h3 id="2-prone-to-being-misuesd">2. Prone to being misuesd<a hidden class="anchor" aria-hidden="true" href="#2-prone-to-being-misuesd">#</a></h3>
+<p>At some point, someone will inevitably start adding code to the core module that was never intended to be placed there. Due to this ambiguity, developers may treat the core module as a dumping ground for code they’re unsure where to place. As a result, the core module (originally meant to promote clean, low-footprint architecture) can devolve into a verbose, catch-all module containing everything from network handlers to formatters and mapper utilities.</p>
+<h3 id="3-inevitablity-of-a-refactor">3. Inevitablity of a refactor<a hidden class="anchor" aria-hidden="true" href="#3-inevitablity-of-a-refactor">#</a></h3>
+<p>Eventually, someone will need to address the problems introduced by the core module. If they want to avoid side effects—such as having to include the entire core module just to use a simple logger, or multiple developers simultaneously modifying it because they each decide their logic belongs there—then a refactor becomes inevitable. The outcome? The monolithic core module gets broken down into smaller, focused modules like network, local_storage, logger, and so on. So why not distribute these responsibilities from the start and avoid unnecessary overhead later?</p>
+<h3 id="4-an-orphan-module-lack-of-ownership">4. An orphan module (Lack of ownership)<a hidden class="anchor" aria-hidden="true" href="#4-an-orphan-module-lack-of-ownership">#</a></h3>
+<p>When a core module becomes a dumping ground for everything that might be useful somewhere else (utility functions, constants, extensions, logging helpers, DI setup, network models, etc.) no one feels responsible for maintaining it. It becomes a &ldquo;shared&rdquo; place where anyone can add anything without clear rules or ownership. Without ownership, bugs go unfixed, outdated code piles up, and new developers don’t know where to look. Developers don’t know what belongs in <code>:core</code>, and Because everyone uses <code>:core</code>, no one wants to touch it for fear of breaking everything.</p>
+<h2 id="verdict">Verdict<a hidden class="anchor" aria-hidden="true" href="#verdict">#</a></h2>
+<p>While the idea of a core module may seem like a smart way to centralize reusable components, in practice it often introduces more problems than it solves. Its vague purpose, tendency to attract unrelated code, and lack of clear ownership can lead to significant architectural decay over time. Rather than relying on a monolithic core, favor small, well-named, purpose-specific modules from the start. This approach not only promotes clean boundaries and single responsibility but also makes your codebase easier to navigate, test, and evolve. When in doubt, split it out.</p>
+<h2 id="mantra">Mantra<a hidden class="anchor" aria-hidden="true" href="#mantra">#</a></h2>
+<blockquote>
+<p>&ldquo;Core isn’t a junk drawer. Organize from day one.&rdquo;</p></blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://arjmandi.de/tags/android/">Android</a></li>
+      <li><a href="https://arjmandi.de/tags/kotlin/">Kotlin</a></li>
+      <li><a href="https://arjmandi.de/tags/clean-architecture/">Clean-Architecture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://arjmandi.de/blog/sdk-dev-good-bad-ugly/">
+    <span class="title">Next »</span>
+    <br>
+    <span>SDK Development; The Good, The Bad, The Ugly</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

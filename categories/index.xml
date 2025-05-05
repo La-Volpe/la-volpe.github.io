@@ -6,8 +6,15 @@
     <description>Recent content in Categories on Javad Arjmandi</description>
     <generator>Hugo -- 0.147.0</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Nov 2024 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 May 2025 20:00:00 +0200</lastBuildDate>
     <atom:link href="https://arjmandi.de/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Koans</title>
+      <link>https://arjmandi.de/categories/koans/</link>
+      <pubDate>Mon, 05 May 2025 20:00:00 +0200</pubDate>
+      <guid>https://arjmandi.de/categories/koans/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Development</title>
       <link>https://arjmandi.de/categories/development/</link>

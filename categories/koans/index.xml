@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Koans on Javad Arjmandi</title>
+    <link>https://arjmandi.de/categories/koans/</link>
+    <description>Recent content in Koans on Javad Arjmandi</description>
+    <generator>Hugo -- 0.147.0</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 May 2025 20:00:00 +0200</lastBuildDate>
+    <atom:link href="https://arjmandi.de/categories/koans/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Koans: core modules.</title>
+      <link>https://arjmandi.de/blog/core-module-is-bad/</link>
+      <pubDate>Mon, 05 May 2025 20:00:00 +0200</pubDate>
+      <guid>https://arjmandi.de/blog/core-module-is-bad/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The Koans&amp;rdquo; series consists of excerpts from my conversations with other engineers whom I turn to when I have questions. I usually come up with a question, ask them, and then try to understand their response. I then add some of my own insights to ensure my understanding (and potentially help others understand as well) before publishing them on this blog.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;pretext&#34;&gt;Pretext&lt;/h2&gt;
+&lt;p&gt;Today, I started a project from scratch and added a core module. I then asked myself, “It might be useful to place this and that into the core module for reuse later—but what if I end up injecting it into every module and submodule? Wouldn’t that violate loose coupling and the Single Responsibility Principle?” Seeking clarity, I turned to &lt;a href=&#34;http://mbt925.github.io&#34;&gt;Mohsen&lt;/a&gt; for guidance. That conversation led to a moment of enlightment.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
